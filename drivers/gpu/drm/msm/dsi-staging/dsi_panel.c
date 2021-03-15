@@ -755,6 +755,7 @@ int dsi_panel_update_doze(struct dsi_panel *panel) {
 	int rc = 0;
 
 	if (panel->doze_enabled) {
+        dsi_panel_set_dimlayer_bl_backlight(panel, false);
 		rc = dsi_panel_tx_cmd_set(panel, panel->doze_mode ? DSI_CMD_SET_DOZE_HBM : DSI_CMD_SET_DOZE_LBM);
 	} else {
 		rc = dsi_panel_tx_cmd_set(panel, DSI_CMD_SET_NOLP);
